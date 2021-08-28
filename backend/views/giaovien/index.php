@@ -134,6 +134,7 @@
                                 <thead class="bg-gray">
                                 <tr>
                                     <th class="text-center v-inherit text-dark">Mã <?php echo $name; ?></th>
+                                    <th class="text-center v-inherit text-dark">Tên đăng nhập</th>
                                     <th class="text-center v-inherit text-dark">Tên <?php echo $name; ?></th>
                                     <th class="text-center v-inherit text-dark">Tên bộ môn</th>
                                     <th class="text-center v-inherit text-dark">Vai trò</th>
@@ -146,6 +147,7 @@
                                         echo 
                                         '<tr>
                                             <td class="text-left v-inherit">'.$val["maGiaoVien"].'</td>
+                                            <td class="text-left v-inherit">'.$val["tenUser"].'</td>
                                             <td class="text-left v-inherit">'.$val["tenGiaoVien"].'</td>
                                             <td class="text-left v-inherit">'.$val["tenBoMon"].'</td>
                                             <td class="text-left v-inherit">'.$val["vaiTro"].'</td>

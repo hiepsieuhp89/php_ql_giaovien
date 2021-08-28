@@ -1,6 +1,5 @@
 <?php
 require_once 'models/Model.php';
-require_once 'models/Pagination.php';
 class Giaovien extends Model
 {
     private $cn;
@@ -12,18 +11,20 @@ class Giaovien extends Model
 
     public function getAll()
     {
-        $sql = "SELECT giaovien.*, BoMon.tenBoMon AS tenBoMon FROM giaovien
-        INNER JOIN BoMon ON GiaoVien.maBoMon = BoMon.maBoMon";
+        $sql = "SELECT giaovien.*, BoMon.tenBoMon AS tenBoMon, User.tenUser as tenUser FROM giaovien
+        LEFT JOIN BoMon ON GiaoVien.maBoMon = BoMon.maBoMon
+        LEFT JOIN User ON GiaoVien.maUser = User.maUser";
 
         return $this->cn->FetchAll($sql); 
     }
-    public function ThemGiaoVien($maGiaoVien, $tenGiaoVien, $maBoMon, $vaiTro)
+    public function ThemGiaoVien($maGiaoVien, $tenGiaoVien, $maBoMon, $vaiTro, $maUser='null')
 	  {
         $now = date("Y-m-d H:i:s");
-        $sql = "INSERT INTO giaovien VALUES($maGiaoVien, '$tenGiaoVien', $maBoMon, '$now', '$vaiTro')";
+        $sql = "INSERT INTO giaovien VALUES($maGiaoVien, '$tenGiaoVien', $maBoMon, '$now', '$vaiTro',$maUser)";
         //return $sql;
         return $this->cn->ExecuteQuery($sql);
 	  }
+
     public function SuaGiaoVien($maGiaoVien, $tenGiaoVien, $maBoMon, $vaiTro)
 	  {
         //$now = date("Y-m-d H:i:s");
@@ -39,8 +40,8 @@ class Giaovien extends Model
 
         $timten = trim($tenGiaoVien) == ''? '' : "OR tenGiaoVien like '%$tenGiaoVien%'";
 
-        $sql = "SELECT giaovien.*, BoMon.tenBoMon AS tenBoMon FROM GiaoVien
-        INNER JOIN BoMon ON GiaoVien.maBoMon = BoMon.maBoMon WHERE maGiaoVien = $maGiaoVien $timten";
+        $sql = "SELECT giaovien.*, BoMon.tenBoMon AS tenBoMon,User.tenUser as tenUser FROM GiaoVien
+        LEFT JOIN BoMon ON GiaoVien.maBoMon = BoMon.maBoMon LEFT JOIN User ON GiaoVien.maUser = User.maUser WHERE maGiaoVien = $maGiaoVien $timten";
         
         return $this->cn->FetchAll($sql); 
     }

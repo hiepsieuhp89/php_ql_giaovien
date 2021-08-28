@@ -1,6 +1,5 @@
 <?php
 require_once 'models/Model.php';
-require_once 'models/Pagination.php';
 class Khoa extends Model
 {
 
