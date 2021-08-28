@@ -91,14 +91,13 @@ if (isset($_SESSION['user'])) {
             </span>
                 </a>
             </li>
-            <li>
+            <!-- <li>
                 <a href="index.php?controller=user&action=index">
                     <i class="fa fa-user"></i> <span>Quản lý user</span>
                     <span class="pull-right-container">
-              <!--<small class="label pull-right bg-green">new</small>-->
             </span>
                 </a>
-            </li>
+            </li> -->
         </ul>
     </section>
     <!-- /.sidebar -->
